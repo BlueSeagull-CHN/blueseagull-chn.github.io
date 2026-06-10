@@ -2,8 +2,8 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>我的个人主页 | 欢迎光临</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>蓝色海鸥 | 代码·读书·折腾新技术</title>
     <style>
         * {
             margin: 0;
@@ -12,291 +12,286 @@
         }
 
         body {
-            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #e9edf2 100%);
-            min-height: 100vh;
+            font-family: system-ui, -apple-system, 'Segoe UI', 'SF Pro Text', 'Noto Sans', sans-serif;
+            background: #f0f4f8;
+            line-height: 1.5;
+            color: #1e293b;
+        }
+
+        /* 导航栏 */
+        .navbar {
+            background: white;
+            backdrop-filter: blur(8px);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .logo {
+            font-weight: 700;
+            font-size: 1.3rem;
+            background: linear-gradient(135deg, #0f2b3d, #1b4f6e);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        .nav-links {
+            display: flex;
+            gap: 1.8rem;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #2c3e66;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover {
+            color: #1e6f9f;
+        }
+
+        /* 主容器 */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
             padding: 2rem 1.5rem;
         }
 
-        /* 主卡片容器 */
-        .card {
-            max-width: 1100px;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.96);
-            backdrop-filter: blur(2px);
-            border-radius: 2rem;
-            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
-            overflow: hidden;
-            transition: transform 0.2s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-        }
-
-        /* 头部区域（可放置横幅或装饰） */
+        /* 英雄区 */
         .hero {
-            background: linear-gradient(120deg, #1e2a3a, #0f1724);
-            padding: 2rem 2rem 1.5rem 2rem;
-            text-align: center;
-            color: white;
+            background: linear-gradient(120deg, #eef2ff, #ffffff);
+            border-radius: 2rem;
+            padding: 2rem 2rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.02);
+            border: 1px solid rgba(59,130,246,0.1);
         }
-
-        .avatar {
-            width: 110px;
-            height: 110px;
-            background: #ffd966;
-            border-radius: 50%;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3.5rem;
-            font-weight: 500;
-            color: #2c3e2f;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-            margin-bottom: 1rem;
-            border: 3px solid rgba(255,255,240,0.7);
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            background: linear-gradient(145deg, #0b3b4f, #22668d);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 0.5rem;
         }
-
-        h1 {
-            font-size: 2rem;
-            letter-spacing: -0.5px;
-            font-weight: 600;
-            margin-bottom: 0.4rem;
+        .hero-tag {
+            font-size: 1.1rem;
+            color: #2c5f8a;
+            border-left: 4px solid #3b82f6;
+            padding-left: 1rem;
+            margin: 1rem 0;
         }
-
-        .tagline {
-            font-size: 1rem;
-            opacity: 0.85;
-            font-weight: 400;
-            border-top: 1px solid rgba(255,255,255,0.2);
-            display: inline-block;
-            padding-top: 0.5rem;
-            margin-top: 0.25rem;
-        }
-
-        /* 主要内容区域 */
-        .content {
-            padding: 2rem 2rem 2rem 2rem;
-        }
-
-        .bio {
-            background: #f8fafc;
-            padding: 1.2rem 1.5rem;
-            border-radius: 1.5rem;
-            margin-bottom: 2rem;
-            border-left: 5px solid #3b82f6;
-            font-size: 1rem;
-            line-height: 1.5;
-            color: #1f2937;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.02);
-        }
-
-        .section-title {
-            font-size: 1.4rem;
-            font-weight: 600;
-            margin: 1.5rem 0 1rem 0;
-            color: #0f172a;
+        .hero-buttons {
             display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            border-bottom: 2px solid #e2e8f0;
-            padding-bottom: 0.4rem;
-        }
-
-        .section-title span {
-            background: #3b82f6;
-            color: white;
-            width: 28px;
-            height: 28px;
-            border-radius: 10px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.9rem;
-        }
-
-        /* 链接卡片网格 */
-        .links-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
             gap: 1rem;
-            margin: 0.5rem 0 1rem 0;
-        }
-
-        .link-card {
-            background: white;
-            border: 1px solid #eef2ff;
-            border-radius: 1.2rem;
-            padding: 0.8rem 1rem;
-            text-decoration: none;
-            transition: all 0.2s;
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            color: #1e293b;
-            font-weight: 500;
-            box-shadow: 0 1px 1px rgba(0,0,0,0.02);
-        }
-
-        .link-card:hover {
-            background: #f1f5f9;
-            border-color: #b9c7e9;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 18px -8px rgba(0, 0, 0, 0.15);
-        }
-
-        .link-emoji {
-            font-size: 1.6rem;
-        }
-
-        /* 项目和爱好列表 */
-        .project-list {
-            list-style: none;
-            margin-top: 0.5rem;
-        }
-
-        .project-list li {
-            background: white;
-            margin-bottom: 0.8rem;
-            padding: 0.7rem 1rem;
-            border-radius: 1rem;
-            border: 1px solid #edf2f7;
-            display: flex;
-            align-items: center;
+            margin-top: 1.5rem;
             flex-wrap: wrap;
+        }
+        .btn {
+            padding: 0.5rem 1.2rem;
+            border-radius: 2rem;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        .btn-primary {
+            background: #1e5a7d;
+            color: white;
+            border: none;
+        }
+        .btn-primary:hover {
+            background: #0f3e57;
+            transform: translateY(-2px);
+        }
+        .btn-outline {
+            border: 1px solid #1e5a7d;
+            color: #1e5a7d;
+            background: transparent;
+        }
+        .btn-outline:hover {
+            background: #e6f0f5;
+        }
+
+        /* 卡片网格 */
+        .section-title {
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin: 2rem 0 1rem 0;
+            display: flex;
+            align-items: center;
             gap: 0.6rem;
         }
-
-        .project-name {
-            font-weight: 600;
-            background: #eef2ff;
-            padding: 0.2rem 0.8rem;
-            border-radius: 30px;
-            font-size: 0.8rem;
+        .section-title span {
+            background: #1e5a7d;
+            width: 32px;
+            height: 32px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            color: white;
+            font-size: 1rem;
         }
-
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 1rem 0 1rem;
+        }
+        .project-card {
+            background: white;
+            padding: 1.2rem 1.2rem;
+            border-radius: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+            transition: all 0.25s ease;
+            border: 1px solid #e9eef3;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -12px rgba(0,0,0,0.12);
+            border-color: #cbdde9;
+        }
+        .project-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.6rem;
+            color: #0f2b3d;
+        }
         .project-desc {
             color: #334155;
             font-size: 0.9rem;
-            flex: 1;
+            margin-bottom: 0.8rem;
+        }
+        .project-tech {
+            font-size: 0.75rem;
+            background: #eef2ff;
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            border-radius: 30px;
+            color: #1e5a7d;
         }
 
-        /* 底部 */
+        /* 关于区域 */
+        .about-box {
+            background: #fefce8;
+            border-radius: 1.5rem;
+            padding: 1.6rem 1.8rem;
+            margin: 1rem 0 1rem;
+            border-left: 6px solid #facc15;
+        }
+
+        /* 页脚 */
         .footer {
-            background: #f1f5f9;
-            padding: 1rem 2rem;
+            margin-top: 3rem;
             text-align: center;
+            padding: 1.5rem;
+            border-top: 1px solid #dee5ed;
+            color: #4a627a;
             font-size: 0.8rem;
-            color: #4b5563;
-            border-top: 1px solid #e2e8f0;
         }
 
         @media (max-width: 640px) {
-            .card {
-                border-radius: 1.5rem;
+            .navbar {
+                flex-direction: column;
+                align-items: center;
             }
-            .hero {
-                padding: 1.2rem;
-            }
-            .content {
-                padding: 1.2rem;
-            }
-            .links-grid {
-                grid-template-columns: 1fr;
-            }
-            h1 {
+            .hero h1 {
                 font-size: 1.6rem;
             }
-            .avatar {
-                width: 85px;
-                height: 85px;
-                font-size: 2.5rem;
+            .section-title {
+                font-size: 1.3rem;
             }
         }
     </style>
 </head>
 <body>
-<div class="card">
-    <div class="hero">
-        <div class="avatar">
-            🧑‍💻
+    <nav class="navbar">
+        <div class="logo">🐚 BlueSeagull · 蓝海鸥</div>
+        <div class="nav-links">
+            <a href="#">首页</a>
+            <a href="https://github.com/BlueSeagull-CHN" target="_blank">GitHub</a>
+            <a href="https://github.com/BlueSeagull-CHN/BlueSeagull-CHN" target="_blank">主库</a>
         </div>
-        <h1>林星河</h1>
-        <div class="tagline"> 代码 · 设计 · 好奇心 </div>
-    </div>
+    </nav>
 
-    <div class="content">
-        <!-- 个人简介区域 -->
-        <div class="bio">
-            📍 你好！我是星河，一名独立开发者与开源爱好者。<br>
-            热衷构建优雅的网页工具和效率小产品，喜欢分享技术心得。欢迎访问我的GitHub和博客。
+    <div class="container">
+        <div class="hero">
+            <h1>⚓ 代码 · 读书 · 折腾新技术</h1>
+            <div class="hero-tag">
+                🚀 喜欢写代码、读书、折腾新技术 —— 保持好奇，持续构建。
+            </div>
+            <div class="hero-buttons">
+                <a href="https://github.com/BlueSeagull-CHN" class="btn btn-primary" target="_blank">🐙 GitHub 主页</a>
+                <a href="https://github.com/BlueSeagull-CHN/BlueSeagull-CHN" class="btn btn-outline" target="_blank">📁 主库 · 探索更多</a>
+            </div>
         </div>
 
-        <!-- 社交/重要链接 -->
+        <!-- 精选项目区 (与主库内容呼应) -->
         <div class="section-title">
-            <span>🔗</span> 足迹 & 社交
+            <span>⭐</span> 近期项目 / 工具
         </div>
-        <div class="links-grid">
-            <a href="#" class="link-card" target="_blank" rel="noopener noreferrer">
-                <span class="link-emoji">🐙</span> GitHub
-            </a>
-            <a href="#" class="link-card" target="_blank" rel="noopener noreferrer">
-                <span class="link-emoji">📘</span> 技术博客
-            </a>
-            <a href="#" class="link-card" target="_blank" rel="noopener noreferrer">
-                <span class="link-emoji">🐦</span> Twitter / X
-            </a>
-            <a href="#" class="link-card" target="_blank" rel="noopener noreferrer">
-                <span class="link-emoji">📧</span> 联系邮箱
-            </a>
+        <div class="project-grid">
+            <div class="project-card">
+                <div class="project-name">🎬 PotPlayer 播放位置记忆管理器</div>
+                <div class="project-desc">
+                    智能管理 PotPlayer 播放进度 · 告别手动清理。<br>
+                    自动加载配置，关键词/日期双模式筛选，一键清理失效文件，安全撤销机制，自动备份。
+                </div>
+                <div class="project-tech">Python · 配置工具</div>
+            </div>
+            <div class="project-card">
+                <div class="project-name">📄 个人笔记 / 知识片段</div>
+                <div class="project-desc">
+                    常用脚本、开发片段和环境配置归档。包含自动化色彩调整、配置示例和更新工作流。
+                </div>
+                <div class="project-tech">Markdown · Shell · GitHub Actions</div>
+            </div>
+            <div class="project-card">
+                <div class="project-name">🔧 Dotfiles & 实用脚本</div>
+                <div class="project-desc">
+                    终端环境配置、快捷工具和自定义脚本，提升日常开发效率。
+                </div>
+                <div class="project-tech">Zsh · Python · Makefile</div>
+            </div>
         </div>
 
-        <!-- 项目展示 -->
+        <!-- 关于 / 状态区 -->
         <div class="section-title">
-            <span>⭐</span> 精选项目
+            <span>📌</span> 关于主库 · BlueSeagull-CHN
         </div>
-        <ul class="project-list">
-            <li>
-                <span class="project-name">RMT-Setting</span>
-                <span class="project-desc">极简的响应式工具面板，支持深色模式切换与配置保存。</span>
-            </li>
-            <li>
-                <span class="project-name">VueStarter</span>
-                <span class="project-desc">开箱即用的Vue3 + Vite后台模板，集成Element Plus。</span>
-            </li>
-            <li>
-                <span class="project-name">Markdown Note</span>
-                <span class="project-desc">基于浏览器的本地笔记工具，实时预览与导出。</span>
-            </li>
-        </ul>
+        <div class="about-box">
+            <p style="margin-bottom: 8px;">✨ <strong>BlueSeagull-CHN/BlueSeagull-CHN</strong> 是我的特殊「自述库」，用于展示我的技术栈、近期动态以及正在孵化的想法。</p>
+            <p>💡 其中包含了 <strong>PotPlayer 播放位置记忆管理器</strong> 的完整介绍、配置示例、自动更新脚本，以及一些我日常使用的代码片段和实验。欢迎访问主库查看更多细节 👇</p>
+            <div style="margin-top: 12px;">
+                <a href="https://github.com/BlueSeagull-CHN/BlueSeagull-CHN" target="_blank" style="color:#1e6f9f;">🔗 直达主库 → github.com/BlueSeagull-CHN/BlueSeagull-CHN</a>
+            </div>
+        </div>
 
-        <!-- 爱好/日常 -->
+        <!-- 技术 / 兴趣标签 -->
         <div class="section-title">
-            <span>🎯</span> 日常 & 爱好
+            <span>🧰</span> 技术栈 & 常驻兴趣
         </div>
-        <div class="links-grid" style="margin-bottom: 0;">
-            <div class="link-card" style="background:#fef9e3; cursor:default;">
-                <span class="link-emoji">📷</span> 胶片摄影
-            </div>
-            <div class="link-card" style="background:#eef3ff; cursor:default;">
-                <span class="link-emoji">🏸</span> 羽毛球
-            </div>
-            <div class="link-card" style="background:#ffe9e7; cursor:default;">
-                <span class="link-emoji">☕</span> 手冲咖啡
-            </div>
-            <div class="link-card" style="background:#e6f7ec; cursor:default;">
-                <span class="link-emoji">📚</span> 科幻小说
-            </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 0.7rem; margin: 0.5rem 0 1rem;">
+            <span style="background:#e2eafc; padding:0.3rem 0.9rem; border-radius:30px;">Python</span>
+            <span style="background:#e2eafc; padding:0.3rem 0.9rem; border-radius:30px;">GitHub Actions</span>
+            <span style="background:#e2eafc; padding:0.3rem 0.9rem; border-radius:30px;">Shell 脚本</span>
+            <span style="background:#e2eafc; padding:0.3rem 0.9rem; border-radius:30px;">Jekyll / 静态站</span>
+            <span style="background:#e2eafc; padding:0.3rem 0.9rem; border-radius:30px;">Markdown 写作</span>
+            <span style="background:#e2eafc; padding:0.3rem 0.9rem; border-radius:30px;">工具开发</span>
+        </div>
+        <div style="background: #e9f0f5; border-radius: 1.2rem; padding: 0.8rem 1.2rem; margin-top: 0.5rem; font-size: 0.85rem;">
+            📬 希望在这个数字花园里持续分享代码、读书笔记和实用工具。
         </div>
     </div>
 
     <div class="footer">
-        🌟 构建于 GitHub Pages · 最后更新于 2025年 · 保持好奇，乐于创造
+        🌊 BlueSeagull · 保持好奇，乐于创造 · 站点基于 GitHub Pages 搭建
     </div>
-</div>
 </body>
 </html>
