@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>蓝色海鸥 | 代码·读书·折腾新技术</title>
+    <title>蓝色海鸥 · 灵动空间</title>
     <style>
         * {
             margin: 0;
@@ -12,286 +12,348 @@
         }
 
         body {
-            font-family: system-ui, -apple-system, 'Segoe UI', 'SF Pro Text', 'Noto Sans', sans-serif;
-            background: #f0f4f8;
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', 'SF Pro Text', sans-serif;
+            background: #f7f9fc;
+            color: #1a2c3e;
             line-height: 1.5;
-            color: #1e293b;
         }
 
-        /* 导航栏 */
-        。navbar {
-            background: white;
-            backdrop-filter: blur(8px);
-            padding: 1rem 2rem;
-            position: sticky;
-            top: 0;
-            z-index: 10;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        /* 柔和装饰背景 */
+        .bg-blob {
+            position: fixed;
+            top: -20%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(180, 210, 240, 0.4) 0%, rgba(245, 248, 250, 0) 70%);
+            border-radius: 50%;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .bg-blob-2 {
+            position: fixed;
+            bottom: -15%;
+            left: -5%;
+            width: 450px;
+            height: 450px;
+            background: radial-gradient(circle, rgba(200, 225, 245, 0.35) 0%, rgba(245, 248, 250, 0) 70%);
+            border-radius: 50%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem 3rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* 灵动导航 */
+        .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 1rem;
+            background: rgba(255,255,245,0.7);
+            backdrop-filter: blur(8px);
+            padding: 0.8rem 1.8rem;
+            border-radius: 60px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+            border: 1px solid rgba(150,180,210,0.3);
         }
-        。logo {
-            font-weight: 700;
-            font-size: 1.3rem;
-            background: linear-gradient(135deg, #0f2b3d, #1b4f6e);
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, #2c5a7a, #5787a8);
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
         }
         .nav-links {
             display: flex;
-            gap: 1.8rem;
+            gap: 1.6rem;
         }
         .nav-links a {
             text-decoration: none;
-            color: #2c3e66;
-            font-weight: 500;
-            transition: color 0.2s;
+            color: #456e8c;
+            font-weight: 470;
+            transition: 0.2s;
         }
         .nav-links a:hover {
-            color: #1e6f9f;
+            color: #1e6b9e;
         }
 
-        /* 主容器 */
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 2rem 1.5rem;
+        /* 英雄区 — 倾斜不对称 */
+        .hero {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+            margin: 1.5rem 0 3rem 0;
         }
-
-        /* 英雄区 */
-        。hero {
-            background: linear-gradient(120deg, #eef2ff, #ffffff);
-            border-radius: 2rem;
-            padding: 2rem 2rem;
-            margin-bottom: 2.5rem;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.02);
-            border: 1px solid rgba(59,130,246,0.1);
+        .hero-text {
+            flex: 1.2;
         }
-        .hero h1 {
-            font-size: 2.2rem;
+        .hero-text h1 {
+            font-size: 3rem;
             font-weight: 700;
-            background: linear-gradient(145deg, #0b3b4f, #22668d);
+            letter-spacing: -0.02em;
+            background: linear-gradient(125deg, #1a5f7a, #2b8db0);
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
-            margin-bottom: 0.5rem;
+            line-height: 1.2;
         }
-        .hero-tag {
-            font-size: 1.1rem;
-            color: #2c5f8a;
-            border-left: 4px solid #3b82f6;
+        .hero-desc {
+            font-size: 1rem;
+            color: #3a627b;
+            margin: 1rem 0 1.5rem 0;
+            max-width: 85%;
+            border-left: 3px solid #7fb0cf;
             padding-left: 1rem;
-            margin: 1rem 0;
         }
-        .hero-buttons {
+        .hero-stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .stat-pill {
+            background: #eef3fa;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: #2c6b8f;
+        }
+        .btn-group {
             display: flex;
             gap: 1rem;
-            margin-top: 1.5rem;
-            flex-wrap: wrap;
+            margin-top: 1.8rem;
         }
         .btn {
-            padding: 0.5rem 1.2rem;
-            border-radius: 2rem;
+            padding: 0.5rem 1.3rem;
+            border-radius: 40px;
             text-decoration: none;
             font-weight: 500;
-            transition: all 0.2s;
+            transition: 0.2s;
         }
         .btn-primary {
-            background: #1e5a7d;
+            background: #2c7ba0;
             color: white;
-            border: none;
+            box-shadow: 0 2px 6px rgba(44,123,160,0.2);
         }
         .btn-primary:hover {
-            background: #0f3e57;
+            background: #1c6385;
             transform: translateY(-2px);
         }
         .btn-outline {
-            border: 1px solid #1e5a7d;
-            color: #1e5a7d;
-            background: transparent;
+            border: 1px solid #7aa9c4;
+            color: #2c6b8f;
         }
         .btn-outline:hover {
-            background: #e6f0f5;
+            background: #e5f0f8;
+        }
+        .hero-emoji {
+            flex: 0.8;
+            text-align: center;
+            font-size: 5rem;
+            background: #eef6fc;
+            border-radius: 48% 52% 40% 60% / 60% 40% 60% 40%;
+            padding: 1.5rem;
+            box-shadow: 12px 18px 28px -12px rgba(0,0,0,0.08);
         }
 
-        /* 卡片网格 */
-        .section-title {
-            font-size: 1.6rem;
-            font-weight: 600;
-            margin: 2rem 0 1rem 0;
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-        }
-        .section-title span {
-            background: #1e5a7d;
-            width: 32px;
-            height: 32px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 12px;
-            color: white;
-            font-size: 1rem;
-        }
-        .project-grid {
+        /* 灵动卡片 — 不同形状与色块 */
+        .card-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin: 1rem 0 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 1.8rem;
+            margin: 1rem 0 2rem;
         }
         .project-card {
             background: white;
-            padding: 1.2rem 1.2rem;
-            border-radius: 1.5rem;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+            padding: 1.5rem;
+            border-radius: 32px;
             transition: all 0.25s ease;
-            border: 1px solid #e9eef3;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.02);
+            border: 1px solid #dee9f2;
+        }
+        .project-card:nth-child(1) {
+            background: #ffffff;
+            border-bottom: 4px solid #7fb0cf;
+        }
+        .project-card:nth-child(2) {
+            background: #fefcf5;
+            border-radius: 48px 24px 48px 24px;
+        }
+        .project-card:nth-child(3) {
+            background: #f4f9fe;
+            border-radius: 24px 48px 24px 48px;
         }
         .project-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-6px);
             box-shadow: 0 20px 25px -12px rgba(0,0,0,0.12);
-            border-color: #cbdde9;
         }
         .project-name {
             font-size: 1.25rem;
-            font-weight: 700;
+            font-weight: 650;
+            color: #1d5b7c;
             margin-bottom: 0.6rem;
-            color: #0f2b3d;
         }
         .project-desc {
-            color: #334155;
-            font-size: 0.9rem;
-            margin-bottom: 0.8rem;
+            font-size: 0.85rem;
+            color: #2d5672;
+            margin-bottom: 1rem;
         }
-        .project-tech {
-            font-size: 0.75rem;
-            background: #eef2ff;
+        .project-tag {
+            font-size: 0.7rem;
+            background: #e3edf5;
             display: inline-block;
-            padding: 0.2rem 0.6rem;
+            padding: 0.2rem 0.7rem;
             border-radius: 30px;
-            color: #1e5a7d;
+            color: #286f96;
         }
 
-        /* 关于区域 */
-        .about-box {
-            background: #fefce8;
-            border-radius: 1.5rem;
-            padding: 1.6rem 1.8rem;
-            margin: 1rem 0 1rem;
-            border-left: 6px solid #facc15;
+        /* 色块区域: 关于区块 — 灵动背景 */
+        .about-block {
+            background: #eef3f5;
+            border-radius: 48px 24px 48px 24px;
+            padding: 2rem;
+            margin: 2rem 0 1rem;
+            box-shadow: 8px 12px 24px -14px rgba(0,0,0,0.06);
+        }
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin: 1rem 0;
+        }
+        .tech-stack span {
+            background: #c7dfee;
+            padding: 0.25rem 1rem;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: #1d5a79;
         }
 
-        /* 页脚 */
+        /* 灵动趣味区域 */
+        .extra-mood {
+            background: #faf5e8;
+            border-radius: 32px;
+            padding: 1rem 1.8rem;
+            margin-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            border: 1px solid #e2e0cf;
+        }
+
         .footer {
-            margin-top: 3rem;
             text-align: center;
-            padding: 1.5rem;
-            border-top: 1px solid #dee5ed;
-            color: #4a627a;
-            font-size: 0.8rem;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            font-size: 0.75rem;
+            color: #608aa8;
+            border-top: 1px solid #e2eaf1;
         }
 
-        @media (max-width: 640px) {
-            .navbar {
+        @media (max-width: 760px) {
+            .hero {
                 flex-direction: column;
-                align-items: center;
             }
-            .hero h1 {
-                font-size: 1.6rem;
+            .hero-text h1 {
+                font-size: 2.2rem;
             }
-            .section-title {
-                font-size: 1.3rem;
+            .hero-desc {
+                max-width: 100%;
+            }
+            .navbar {
+                border-radius: 32px;
             }
         }
     </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="logo">🐚 BlueSeagull · 蓝色海鸥</div>
+<div class="bg-blob"></div>
+<div class="bg-blob-2"></div>
+
+<div class="container">
+    <div class="navbar">
+        <div class="logo">🕊️ 蓝色海鸥 · BlueSeagull</div>
         <div class="nav-links">
-            <a href="#">首页</a>
+            <a href="#">漂流主页</a>
             <a href="https://github.com/BlueSeagull-CHN" target="_blank">GitHub</a>
             <a href="https://github.com/BlueSeagull-CHN/BlueSeagull-CHN" target="_blank">主库</a>
         </div>
-    </nav>
+    </div>
 
-    <div class="container">
-        <div class="hero">
-            <h1>⚓ 代码 · 读书 · 折腾新技术</h1>
-            <div class="hero-tag">
-                🚀 喜欢写代码、读书、折腾新技术 —— 保持好奇，持续构建。
+    <div class="hero">
+        <div class="hero-text">
+            <h1>代码，阅读<br>与秩序感</h1>
+            <div class="hero-desc">构建轻量工具 · 沉淀技术笔记<br>保持专注，交付稳重的产出。</div>
+            <div class="hero-stats">
+                <span class="stat-pill">🐍 Python</span>
+                <span class="stat-pill">⚙️ Actions</span>
+                <span class="stat-pill">📦 脚本化</span>
             </div>
-            <div class="hero-buttons">
-                <a href="https://github.com/BlueSeagull-CHN" class="btn btn-primary" target="_blank">🐙 GitHub 主页</a>
-                <a href="https://github.com/BlueSeagull-CHN/BlueSeagull-CHN" class="btn btn-outline" target="_blank">📁 主库 · 探索更多</a>
+            <div class="btn-group">
+                <a href="https://github.com/BlueSeagull-CHN" class="btn btn-primary" target="_blank">GitHub 主页</a>
+                <a href="https://github.com/BlueSeagull-CHN/BlueSeagull-CHN" class="btn btn-outline" target="_blank">主库详情</a>
             </div>
         </div>
+        <div class="hero-emoji">
+            🧊 ⚡ 🧩
+        </div>
+    </div>
 
-        <!-- 精选项目区 (与主库内容呼应) -->
-        <div class="section-title">
-            <span>⭐</span> 近期项目 / 工具
+    <!-- 灵动项目卡片 · 色块区分 -->
+    <div class="card-grid">
+        <div class="project-card">
+            <div class="project-name">🎬 PotPlayer 进度管理器</div>
+            <div class="project-desc">智能记忆播放位置，关键词/日期筛选、一键清理失效条目，自动备份与撤销。</div>
+            <div class="project-tag">Python · 桌面工具</div>
         </div>
-        <div class="project-grid">
-            <div class="project-card">
-                <div class="project-name">🎬 PotPlayer 播放位置记忆管理器</div>
-                <div class="project-desc">
-                    智能管理 PotPlayer 播放进度 · 告别手动清理。<br>
-                    自动加载配置，关键词/日期双模式筛选，一键清理失效文件，安全撤销机制，自动备份。
-                </div>
-                <div class="project-tech">Python · 配置工具</div>
-            </div>
-            <div class="project-card">
-                <div class="project-name">📄 个人笔记 / 知识片段</div>
-                <div class="project-desc">
-                    常用脚本、开发片段和环境配置归档。包含自动化色彩调整、配置示例和更新工作流。
-                </div>
-                <div class="project-tech">Markdown · Shell · GitHub Actions</div>
-            </div>
-            <div class="project-card">
-                <div class="project-name">🔧 Dotfiles & 实用脚本</div>
-                <div class="project-desc">
-                    终端环境配置、快捷工具和自定义脚本，提升日常开发效率。
-                </div>
-                <div class="project-tech">Zsh · Python · Makefile</div>
-            </div>
+        <div class="project-card">
+            <div class="project-name">📁 脚本库 & dotfiles</div>
+            <div class="project-desc">终端环境、自动化色彩调整、配置示例，提升日常效率。</div>
+            <div class="project-tag">Shell · Makefile</div>
         </div>
+        <div class="project-card">
+            <div class="project-name">📘 技术笔记·片段</div>
+            <div class="project-desc">Git 工作流、Pages 部署、Markdown 写作归档。</div>
+            <div class="project-tag">技术写作 · 知识沉淀</div>
+        </div>
+    </div>
 
-        <!-- 关于 / 状态区 -->
-        <div class="section-title">
-            <span>📌</span> 关于主库 · BlueSeagull-CHN
+    <!-- 关于色块 - 不对称圆润设计 -->
+    <div class="about-block">
+        <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap; justify-content: space-between;">
+            <div><strong style="font-size: 1.4rem; color: #235e7e;">🧩 蓝色海鸥 · 自留地</strong></div>
+            <div style="background: #cbe2f0; padding: 0.2rem 1rem; border-radius: 60px; font-size: 0.7rem;">主库映射区</div>
         </div>
-        <div class="about-box">
-            <p style="margin-bottom: 8px;">✨ <strong>BlueSeagull-CHN/BlueSeagull-CHN</strong> 是我的特殊「自述库」，用于展示我的技术栈、近期动态以及正在孵化的想法。</p>
-            <p>💡 其中包含了 <strong>PotPlayer 播放位置记忆管理器</strong> 的完整介绍、配置示例、自动更新脚本，以及一些我日常使用的代码片段和实验。欢迎访问主库查看更多细节 👇</p>
-            <div style="margin-top: 12px;">
-                <a href="https://github.com/BlueSeagull-CHN/BlueSeagull-CHN" target="_blank" style="color:#1e6f9f;">🔗 直达主库 → github.com/BlueSeagull-CHN/BlueSeagull-CHN</a>
-            </div>
+        <p style="margin: 0.8rem 0 0.5rem; line-height: 1.4;">专注于工具型小产品、播放器辅助脚本和环境自动化。主库 <strong>BlueSeagull-CHN/BlueSeagull-CHN</strong> 包含完整 README、配置示例和更新记录。</p>
+        <div class="tech-stack">
+            <span>Python</span><span>GitHub Actions</span><span>Shell</span>
+            <span>Jekyll/静态站</span><span>效率工具</span>
         </div>
+        <div style="font-size: 0.8rem; margin-top: 8px;">🔗 直达主库 → <a href="https://github.com/BlueSeagull-CHN/BlueSeagull-CHN" style="color:#2a7faa;" target="_blank">github.com/BlueSeagull-CHN/BlueSeagull-CHN</a></div>
+    </div>
 
-        <!-- 技术 / 兴趣标签 -->
-        <div class="section-title">
-            <span>🧰</span> 技术栈 & 常驻兴趣
-        </div>
-        <div style="display: flex; flex-wrap: wrap; gap: 0.7rem; margin: 0.5rem 0 1rem;">
-            <span style="background:#e2eafc; padding:0.3rem 0.9rem; border-radius:30px;">Python</span>
-            <span style="background:#e2eafc; padding:0.3rem 0.9rem; border-radius:30px;">GitHub Actions</span>
-            <span style="background:#e2eafc; padding:0.3rem 0.9rem; border-radius:30px;">Shell 脚本</span>
-            <span style="background:#e2eafc; padding:0.3rem 0.9rem; border-radius:30px;">Jekyll / 静态站</span>
-            <span style="background:#e2eafc; padding:0.3rem 0.9rem; border-radius:30px;">Markdown 写作</span>
-            <span style="background:#e2eafc; padding:0.3rem 0.9rem; border-radius:30px;">工具开发</span>
-        </div>
-        <div style="background: #e9f0f5; border-radius: 1.2rem; padding: 0.8rem 1.2rem; margin-top: 0.5rem; font-size: 0.85rem;">
-            📬 希望在这个数字花园里持续分享代码、读书笔记和实用工具。
-        </div>
+    <!-- 灵动小尾巴 -->
+    <div class="extra-mood">
+        <span>✨ “稳重而非笨重，克制但有温度”</span>
+        <span style="font-size: 0.7rem;">📡 持续构建  ·  🕊️ 蓝色海鸥</span>
     </div>
 
     <div class="footer">
-        🌊 BlueSeagull · 保持好奇，乐于创造 · 站点基于 GitHub Pages 搭建
+        托管于 GitHub Pages · 保持好奇，打磨实用工具
     </div>
+</div>
 </body>
 </html>
